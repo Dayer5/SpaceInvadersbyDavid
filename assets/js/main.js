@@ -381,7 +381,7 @@ document.addEventListener('keydown', (e) => {
     if (!game_started) { return }
     keys[e.key] = true;
 
-    if (keys[w]&&keys[i]&&keys[n]) {
+    if (keys['w']&&keys['i']&&keys['n']) {
         time = 1
     }else if (keys['ArrowLeft'] && keys[' ']) {
         player.__move('ArrowLeft', canvas.width)
