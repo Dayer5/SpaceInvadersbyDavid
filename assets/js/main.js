@@ -21,11 +21,12 @@ var start_button_height = 45
 var start_buttonX = canvas.width/2 - start_button_width/2
 var start_buttonY = canvas.height/6*4 - start_button_height/1.2
 var main_text = 'Space Invaders'
-var bottom_text = 'NO'
+var bottom_text = 'START'
 var barrier_width = canvas.height/20
 var barrier_height = canvas.height/20
 var timer = 0
-let timer_interval = null;
+var timer_interval = null;
+var time = 1000
 
 
 //Call Unit Function
@@ -77,6 +78,7 @@ function gameSetup() {
     enemies = []
     enemy_speed = 0.06
     timer = 0
+    time = 1000
 
     //Variables
     var enemyX = (canvas.width - (10 * 35 + 25)) / 2
@@ -379,18 +381,20 @@ document.addEventListener('keydown', (e) => {
     if (!game_started) { return }
     keys[e.key] = true;
 
-    if (keys['ArrowLeft'] && keys[' ']) {
+    if (keys[w]&&keys[i]&&keys[n]) {
+        time = 1
+    }else if (keys['ArrowLeft'] && keys[' ']) {
         player.__move('ArrowLeft', canvas.width)
-        player.__shoot('player')
+        player.__shoot('player',time)
     } else if (keys['ArrowRight'] && keys[' ']) {
         player.__move('ArrowRight', canvas.width)
-        player.__shoot('player')
+        player.__shoot('player',time)
     } else if (keys['ArrowLeft']) {
         player.__move('ArrowLeft', canvas.width)
     } else if (keys['ArrowRight']) {
         player.__move('ArrowRight', canvas.width)
     } else if (keys[' ']) {
-        player.__shoot('player')
+        player.__shoot('player',time)
     }
 
 });

@@ -50,7 +50,7 @@ class Entity{
 
 
 
-    __shoot(type){
+    __shoot(type, time){
         
         if(this.can_shoot){
             let self = this
@@ -67,7 +67,7 @@ class Entity{
             this.can_shoot = false;
             setTimeout( function(){
                 self.__canShoot()
-            }, 1000 )
+            }, time )
         }
     }
 
